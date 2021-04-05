@@ -23,15 +23,16 @@ class Graph :
         # Error Handling 
         if(type(nodeStart) != str or type(nodeEnd) != str ) : 
             raise Exception("Node argument must be a string")
-        if(type(weight) != int) : 
-            raise Exception("Weight argument must be an integer")
+        if(type(weight) != int) :
+            if(weight != float('inf')) : 
+                raise Exception("Weight argument must be an integer or infinity")
         self.__adjacencyList[nodeStart].append({'node' : nodeEnd, 'weight' : weight})
-    def getDistance(self, nodeStart, nodeEnd) : 
-        return ((nodeStart.x - nodeEnd.x )**2 + (nodeStart.y - nodeEnd.y)**2)**0.5 
-    def getDistanceMatrix(self) :
-        distance = {}
-        for node in self.adjacencyList : 
-            distance = getDistance(node1, node2) 
+    def getEuclideanDistance(self, x1, x2, y1, y2) : 
+        return ((x1 - x2 )**2 + (y1 - y2)**2)**0.5 
+    def getHeuristic(self, nodeStart, nodeEnd) :
+        if(type(nodeStart) != Node or  type(nodeEnd) != Node) : 
+            raise Exception("Argument must be an instance of Node Object")
+        return getEuclideanDistance(nodeStart.x, nodeEnd.x, nodeStart.y, nodeEnd.y);
     def setGraphFromFile(self, filename) : 
         # Read the file 
         f = open(filename, "r", encoding="utf-8")
@@ -40,7 +41,6 @@ class Graph :
         for i in arr : 
             temp.append(i.rstrip())
         arr = temp
-        print(arr)
         nodeCount = int(arr[0])
         nodes = arr[1:nodeCount+1]
         adjacencyList = arr[nodeCount+1:]
@@ -56,26 +56,8 @@ class Graph :
             for i in range(len(connectionList[1:])) : 
                 nodeEnd = self.__nodes[i].title
                 weight = int(connectionList[1:][i])
+                if(weight == -1) : 
+                    weight = float('inf')
                 self.addEdge(nodeStart, nodeEnd, weight)
         print(self.__nodes)
         print(self.__adjacencyList);
-            
-    def writeGraphToFile(self, filename) : 
-        # Open the file to write 
-        f = open(filename, "w", encoding="utf-8")
-        string = ""
-        finishedFile = ""
-        connections = self.connections
-
-        # Iterate the graph 
-        for key in connections : 
-            string += "<" + key + ">"
-            for node in connections[key] : 
-                string += ",<" + node + ">"
-            string += ".\n"
-            finishedFile += string 
-            string = ""
-        
-        # Write to the file 
-        f.write(finishedFile)
-        f.close()
