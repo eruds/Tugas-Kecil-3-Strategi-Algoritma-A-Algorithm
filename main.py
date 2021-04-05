@@ -9,8 +9,9 @@ def runTestCases(numOfCases) :
         filename = f"Test{i+1}.txt"
         graph = Graph()
         graph.setGraphFromFile("Test_Case/" + filename)
+        graph.shortestPath('A', 'F')
 def main() : 
-    numOfCases = 1
+    numOfCases = 2
     runTestCases(numOfCases)
 
 main()
