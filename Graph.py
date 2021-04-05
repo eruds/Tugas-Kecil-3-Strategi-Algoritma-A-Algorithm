@@ -11,15 +11,18 @@ class Graph :
 
         # Edges Weight  
         self.__adjacencyList = {}
+
     def printNodes(self) : 
         print("[ ", end="")
         for node in self.nodes : 
             print(node, end=" ")
         print(" ]")
+
     def addNode(self, nodeTitle, x, y) :
         newNode = Node(nodeTitle, x, y)
         self.__nodes[nodeTitle] = (newNode)
         self.__adjacencyList[newNode.title] = {}
+
     def addEdge(self, nodeStart, nodeEnd, weight) : 
         # Error Handling 
         if(type(nodeStart) != str or type(nodeEnd) != str ) : 
@@ -29,11 +32,13 @@ class Graph :
                 raise Exception("Weight argument must be an integer or infinity")
         self.__adjacencyList[nodeStart][nodeEnd] = weight 
     def getEuclideanDistance(self, x1, x2, y1, y2) : 
-        return ((x1 - x2 )**2 + (y1 - y2)**2)**0.5 
+        return ((x1 - x2)**2 + (y1 - y2)**2)**(0.5) 
+
     def getHeuristic(self, nodeStart, nodeEnd) :
         if(type(nodeStart) != Node or  type(nodeEnd) != Node) : 
             raise Exception("Argument must be an instance of Node Object")
         return self.getEuclideanDistance(nodeStart.x, nodeEnd.x, nodeStart.y, nodeEnd.y);
+
     def shortestPath(self, nodeStart, nodeEnd) : 
         if(type(nodeStart) != str or type(nodeEnd) != str) : 
             raise Exception("Shortest path node argument must be a string")
@@ -41,6 +46,7 @@ class Graph :
         nodeSet = PriorityQueue()
         distances = {}
         previous = {} 
+        visited = []
         # Initial State 
         nodeSet.enqueue(nodeStart, 0)
         previous[nodeStart] = None
@@ -54,17 +60,18 @@ class Graph :
             currentNode = nodeSet.dequeue().item;
             if(currentNode == nodeEnd) : 
                 path = []
-                distances = 0
+                # distances = 0
                 while(previous[currentNode] != None) : 
                     path.insert(0,currentNode);
                     currentNode = previous[currentNode];
-                print(path)
+                path.insert(0, nodeStart)
+                print(distances)
                 return path
             adjacencyList = dict(filter(lambda node: node[1] != float('inf'), self.__adjacencyList[currentNode].items()))
             for neighbor in adjacencyList :
-                # print(currentNode, neighbor)
+                if(neighbor in visited) : 
+                    continue 
                 weight = self.__adjacencyList[currentNode][neighbor] 
-                # print(weight)
                 if(weight == float('inf')) :
                     continue 
                 candidateDistance = distances[currentNode] + int(weight)
@@ -74,13 +81,9 @@ class Graph :
                     nodeStartInput = self.__nodes[nodeStart]
                     neighborInput = self.__nodes[neighbor]
                     priority = distances[neighbor] + self.getHeuristic(nodeStartInput, neighborInput)
-                    # print(priority)
                     if not nodeSet.exists(neighbor) :  
                         nodeSet.enqueue(neighbor, priority)
-            print(currentNode)
-            print(distances) 
-            print(previous)
-            print(nodeSet)
+            visited.append(currentNode)
 
     def setGraphFromFile(self, filename) : 
         # Read the file 

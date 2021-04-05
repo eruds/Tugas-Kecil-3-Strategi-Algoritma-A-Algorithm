@@ -34,7 +34,7 @@ class PriorityQueue :
             for j in range(self.length):
                 item1 = self.values[i]
                 item2 = self.values[j]
-                if(item1.priority > item2.priority) : 
+                if(item1.priority < item2.priority) : 
                     temp = item1 
                     self.values[i] = item2 
                     self.values[j] = temp
