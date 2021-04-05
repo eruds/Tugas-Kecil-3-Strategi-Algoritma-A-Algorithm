@@ -59,5 +59,6 @@ class Graph :
                 if(weight == -1) : 
                     weight = float('inf')
                 self.addEdge(nodeStart, nodeEnd, weight)
-        print(self.__nodes)
+        for node in self.__nodes : 
+            print(node);
         print(self.__adjacencyList);

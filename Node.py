@@ -4,6 +4,6 @@ class Node :
         self.x = x
         self.y = y
     def __str__(self) : 
-        return self.title
+        return "(" + self.title + "," + self.x + "," + self.y + ")"
 
         
