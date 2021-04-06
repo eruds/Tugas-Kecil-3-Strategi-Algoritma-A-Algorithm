@@ -6,6 +6,7 @@ Proyek ini dikembangkan untuk tujuan pemenuhan keperluan tugas kecil 3 mata kuli
 
 DESCRIPTION
 Program ini menerapkan strategi algoritma A* untuk menentukan lintasan terpendek dari suatu graf, atau dalam kasus ini, peta yang dibentuk menjadi graf
+Program ini juga mengkonversi file input berekstensi .txt dengan format tertentu menjadi graf
 
 SETUP AND REQUIREMENTS
 Untuk menjalankan proyek ini, cukup memerlukan python versi 3.8 keatas
