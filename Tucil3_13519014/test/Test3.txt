@@ -1,0 +1,17 @@
+8
+kubus -933 104
+bonbin -936 84
+batan -882 80
+sabuga -863 78
+dayang -874 115
+saraga -856 102
+mcdonalds -852 135
+borromeus -937 130
+kubus 0 27 30 -1 -1 -1 -1 -1
+bonbin 27 0 60 -1 -1 -1 -1 -1
+batan -1 60 0 62 43 -1 -1 -1
+sabuga -1 -1 62 0 54 -1 -1 -1
+dayang -1 -1 43 54 0 83 55 -1
+saraga -1 -1 -1 -1 83 0 74 -1
+mcdonalds -1 -1 -1 -1 55 74 0 98
+borromeus 30 -1 -1 -1 -1 -1 98 0

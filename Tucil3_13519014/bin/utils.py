@@ -3,7 +3,7 @@ import copy
 
 from Graph import Graph 
 
-
+# Cek graf siklik/tidak
 def checkAcyclic(node, graph, visited, origin) : 
     # Get the key 
     key = node if type(node) == str else node.title
@@ -26,6 +26,7 @@ def checkAcyclic(node, graph, visited, origin) :
             count += 1 
     return count == len(connection)
 
+# Buat graf asiklik
 def generateAcyclicGraph(numberOfNodes, seed) : 
     graph = Graph()
     for i in range(numberOfNodes) :

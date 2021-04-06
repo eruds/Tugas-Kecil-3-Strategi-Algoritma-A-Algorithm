@@ -1,0 +1,17 @@
+8
+Borma -554 519
+SMPN18 -518 416
+Carrefour -466 416
+Uninus -645 444
+Edelweiss -433 496
+Metro -419 588
+Dinas -343 625
+Pandanwangi -627 515
+Borma 0 16 -1 -1 22 -1 -1 13
+SMPN18 16 0 6 -1 -1 -1 -1 -1
+Carrefour -1 6 0 4 -1 -1 -1 -1
+Uninus -1 -1 4 0 7 -1 -1 -1
+Edelweiss 22 -1 -1 7 0 12 -1 -1
+Metro -1 -1 -1 -1 12 0 15 -1
+Dinas -1 -1 -1 -1 -1 15 0 -1
+Pandanwangi 13 -1 -1 -1 -1 -1 -1 0

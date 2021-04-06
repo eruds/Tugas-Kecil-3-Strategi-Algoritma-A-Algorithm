@@ -9,20 +9,23 @@ class Graph :
         # Node Coordinates 
         self.__nodes = {}
 
-        # Edges Weight  
+        # Edges Weight/Priority  
         self.__adjacencyList = {}
 
+    # Menampilkan semua node
     def printNodes(self) : 
         print("[ ", end="")
         for node in self.nodes : 
             print(node, end=" ")
         print(" ]")
 
+    # Menambahkan simpul baru
     def addNode(self, nodeTitle, x, y) :
         newNode = Node(nodeTitle, x, y)
         self.__nodes[nodeTitle] = (newNode)
         self.__adjacencyList[newNode.title] = {}
 
+    # Menambahkan sisi baru
     def addEdge(self, nodeStart, nodeEnd, weight) : 
         # Error Handling 
         if(type(nodeStart) != str or type(nodeEnd) != str ) : 
@@ -31,9 +34,12 @@ class Graph :
             if(weight != float('inf')) : 
                 raise Exception("Weight argument must be an integer or infinity")
         self.__adjacencyList[nodeStart][nodeEnd] = weight 
+
+    # Mendapatkan jarak Eucledean
     def getEuclideanDistance(self, x1, x2, y1, y2) : 
         return ((x1 - x2)**2 + (y1 - y2)**2)**(0.5) 
 
+    # Heuristik
     def getHeuristic(self, nodeStart, nodeEnd) :
         if(type(nodeStart) != Node or  type(nodeEnd) != Node) : 
             raise Exception("Argument must be an instance of Node Object")
@@ -85,6 +91,7 @@ class Graph :
                         nodeSet.enqueue(neighbor, priority)
             visited.append(currentNode)
 
+    # Membuat graf dari file
     def setGraphFromFile(self, filename) : 
         # Read the file 
         f = open(filename, "r", encoding="utf-8")
@@ -112,7 +119,3 @@ class Graph :
                 if(weight == -1) : 
                     weight = float('inf')
                 self.addEdge(nodeStart, nodeEnd, weight)
-        # for key in self.__nodes : 
-        #     node = self.__nodes[key]
-        #     print(node);
-        # print(self.__adjacencyList);

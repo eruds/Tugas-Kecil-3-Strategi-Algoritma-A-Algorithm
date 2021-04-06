@@ -1,3 +1,4 @@
+# Kelas simpul
 class Node : 
     def __init__(self, title, x, y) : 
         if(type(title) != str ) : 

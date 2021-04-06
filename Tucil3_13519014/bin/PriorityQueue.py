@@ -1,3 +1,4 @@
+# Kelas isi/item priority queue
 class PriorityQueueItem : 
     def __init__(self, item, priority) : 
         if(type(priority) != str and type(priority) != int and type(priority) != float) : 
@@ -7,6 +8,7 @@ class PriorityQueueItem :
     def __str__(self) : 
         return "(" + str(self.item) + "," + str(self.priority) + ")"
 
+# Kelas priority queue
 class PriorityQueue : 
     def __init__(self) : 
         self.values = []
@@ -20,15 +22,19 @@ class PriorityQueue :
                 text += ","
         text += "]"
         return text 
+
     def enqueue(self, item, priority) : 
         newItem = PriorityQueueItem(item, priority)
         self.values.append(newItem)
         self.length += 1
         self.sort()
+
     def dequeue(self) : 
         item = self.values.pop(0)
         self.length -= 1
         return item
+
+    # Sort berdasarkan priority
     def sort(self) : 
         for i in range(self.length):
             for j in range(self.length):
@@ -38,10 +44,14 @@ class PriorityQueue :
                     temp = item1 
                     self.values[i] = item2 
                     self.values[j] = temp
+
+    # Cek apakah ada item
     def exists(self, item) : 
         for val in self.values : 
             if(val.item == item) : 
                 return True
         return False 
+    
+    # Cek apakah kosong
     def empty(self) : 
         return self.length == 0
