@@ -16,7 +16,7 @@ Program dapat dijalannya dengan mengklik file run.bat pada folder bin
 ATAU
 Jalankan program dengan cara mengetik
 py main.py
-di command prompt dalam folder bin atau src.
+di command prompt dalam folder src.
 
 Jika ingin menguji testcase satu-per-satu secara manual, dapat dilakukan sebagai berikut:
 - Comment baris "runTestCases(numOfCases)"

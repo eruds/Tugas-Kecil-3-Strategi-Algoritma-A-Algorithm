@@ -25,13 +25,13 @@ Untuk menjalankan proyek ini, cukup memerlukan python versi 3.8 keatas.
 
 ## How to Run
 
-Program dapat dijalannya dengan mengklik file run.bat pada folder bin.
+Program dapat dijalannya dengan mengklik file run.bat pada folder bin
 ATAU
 Jalankan program dengan cara mengetik.
 ```bash
 py main.py
 ```
-di command prompt dalam folder bin atau src.
+di command prompt dalam folder src.
 
 Jika ingin menguji testcase satu-per-satu secara manual, dapat dilakukan sebagai berikut:
 1. Comment baris "runTestCases(numOfCases)"
