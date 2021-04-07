@@ -11,26 +11,28 @@ class PriorityQueueItem :
 # Kelas priority queue
 class PriorityQueue : 
     def __init__(self) : 
-        self.values = []
+        self.__values = []
         self.length = 0
     def __str__(self) : 
         text = "["
         for i in range(self.length):
-            item = self.values[i]
+            item = self.__values[i]
             text += str(item)
             if(i != self.length-1) : 
                 text += ","
         text += "]"
         return text 
 
+    # Menambahkan item baru ke dalam priority queue
     def enqueue(self, item, priority) : 
         newItem = PriorityQueueItem(item, priority)
-        self.values.append(newItem)
+        self.__values.append(newItem)
         self.length += 1
         self.sort()
 
+    # Menghapus data dari priority queue
     def dequeue(self) : 
-        item = self.values.pop(0)
+        item = self.__values.pop(0)
         self.length -= 1
         return item
 
@@ -38,16 +40,16 @@ class PriorityQueue :
     def sort(self) : 
         for i in range(self.length):
             for j in range(self.length):
-                item1 = self.values[i]
-                item2 = self.values[j]
+                item1 = self.__values[i]
+                item2 = self.__values[j]
                 if(item1.priority < item2.priority) : 
                     temp = item1 
-                    self.values[i] = item2 
-                    self.values[j] = temp
+                    self.__values[i] = item2 
+                    self.__values[j] = temp
 
     # Cek apakah ada item
     def exists(self, item) : 
-        for val in self.values : 
+        for val in self.__values : 
             if(val.item == item) : 
                 return True
         return False 

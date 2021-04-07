@@ -12,8 +12,10 @@ SETUP AND REQUIREMENTS
 Untuk menjalankan proyek ini, cukup memerlukan python versi 3.8 keatas
 
 HOW TO RUN
+Program dapat dijalannya dengan mengklik file run.bat pada folder bin
+ATAU
 Jalankan program dengan cara mengetik
-py main.py
+`py main.py`
 di command prompt dalam folder bin atau src
 
 Pembuat:

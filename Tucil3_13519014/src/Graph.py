@@ -1,5 +1,3 @@
-import copy 
-
 from Node import Node
 from PriorityQueue import PriorityQueue
 
@@ -11,6 +9,13 @@ class Graph :
 
         # Edges Weight/Priority  
         self.__adjacencyList = {}
+    
+    # Getter
+    def getNodes(self) : 
+        return self.__nodes;
+    
+    def getAdjacencyList(self) :
+        return self.__adjacencyList;
 
     # Menampilkan semua node
     def printNodes(self) : 
@@ -45,6 +50,8 @@ class Graph :
             raise Exception("Argument must be an instance of Node Object")
         return self.getEuclideanDistance(nodeStart.x, nodeEnd.x, nodeStart.y, nodeEnd.y);
 
+    # Mencari Shortest Path antara dua node. Tipe balikan berupa map berisi data path dan distance
+    # Antara nodeStart dan nodeEnd
     def shortestPath(self, nodeStart, nodeEnd) : 
         if(type(nodeStart) != str or type(nodeEnd) != str) : 
             raise Exception("Shortest path node argument must be a string")
@@ -71,10 +78,12 @@ class Graph :
                     path.insert(0,currentNode);
                     currentNode = previous[currentNode];
                 path.insert(0, nodeStart)
-                print(distances)
-                return path
+                return { 'path' : path, 'distance' : distances[nodeEnd] }
+
+            # Filtering nodes that have inf distance
             adjacencyList = dict(filter(lambda node: node[1] != float('inf'), self.__adjacencyList[currentNode].items()))
             for neighbor in adjacencyList :
+                # Continue the for loop if the neighbor is already visited
                 if(neighbor in visited) : 
                     continue 
                 weight = self.__adjacencyList[currentNode][neighbor] 
@@ -82,16 +91,22 @@ class Graph :
                     continue 
                 candidateDistance = distances[currentNode] + int(weight)
                 if(candidateDistance < distances[neighbor]) : 
+                    # Adding neighbor to the previous map and distances map
                     previous[neighbor] = currentNode 
                     distances[neighbor] = candidateDistance
+
+                    # Calculating the heuristic value between the starting node and the current neighbor.
                     nodeStartInput = self.__nodes[nodeStart]
                     neighborInput = self.__nodes[neighbor]
                     priority = distances[neighbor] + self.getHeuristic(nodeStartInput, neighborInput)
+                    
+                    # Add the current neighbor to the queue.
                     if not nodeSet.exists(neighbor) :  
                         nodeSet.enqueue(neighbor, priority)
             visited.append(currentNode)
 
     # Membuat graf dari file
+    # This function only works with specific structure that is specified in the sample.txt file
     def setGraphFromFile(self, filename) : 
         # Read the file 
         f = open(filename, "r", encoding="utf-8")
@@ -103,12 +118,14 @@ class Graph :
         nodeCount = int(arr[0])
         nodes = arr[1:nodeCount+1]
         adjacencyList = arr[nodeCount+1:]
+        # Filling the self.__nodes attribute
         for node in nodes : 
             nodeAttributes = node.split();
             title = nodeAttributes[0]
             x = int(nodeAttributes[1])
             y = int(nodeAttributes[2])
             self.addNode(title, x, y);
+        # Filling the self.__adjacencyList attribute;
         for connection in adjacencyList : 
             connectionList = connection.split();
             nodeStart = connectionList[0]

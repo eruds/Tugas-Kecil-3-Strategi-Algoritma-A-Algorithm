@@ -1,0 +1,27 @@
+# Indicating how much nodes exist in the map
+8 
+# This section is for naming each nodes with the format [NodeName] [XCoordinate] [YCoordinate]
+# X and Y coordinate are the important values to determine the heuristic value between nodes
+# to support the ability of A* Algorithm
+A 8 1  
+B 7 2 
+C 1 2 
+D 4 5
+E 7 3
+F 9 1 
+G 0 0
+H -2 3
+# This section is for listing the weight between each nodes with the format :
+# [node1] [WeightToNode1] [WeightToNode2]...
+# [node2] [WeightToNode1] [WeightToNode2]... etc.
+# 0 means it is connected to itself.
+# -1 meant that the nodes are not connected.  
+# Weight between the nodes must be an integer
+A 0 1 6 -1 5 -1 -1 -1
+B 1 0 -1 1 3 -1 -1 -1
+C 6 -1 0 -1 2 -1 -1 -1
+D -1 1 -1 0 2 -1 4 -1
+E 5 3 2 2 0 5 1 -1
+F -1 -1 -1 -1 5 0 9 -1
+G -1 -1 -1 4 1 9 0 2
+H -1 -1 -1 -1 -1 -1 2 0
