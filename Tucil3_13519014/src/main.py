@@ -13,6 +13,7 @@ def runTestCases(numOfCases) :
         graph.setGraphFromFile("../test/" + filename)
         nodes = list(graph.getNodes().keys())
         length = len(nodes)
+        graph.visualize()
         n = random.randint(0,length-1)
         start = nodes[n]
         n = random.randint(0,length-1)
@@ -34,6 +35,7 @@ def main() :
     # filename = input("Masukkan nama file: \n")
     # graph = Graph()
     # graph.setGraphFromFile("../test/" + filename)
+    # graph.visualize()
 
     # # Pastikan nama simpul sesuai dengan pada file input
     # start = input("Masukkan simpul asal: \n")

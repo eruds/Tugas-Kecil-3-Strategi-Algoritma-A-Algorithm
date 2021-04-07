@@ -21,7 +21,10 @@ Program ini juga mengkonversi file input berekstensi .txt dengan format tertentu
 
 ## Setup and Requirements
 
-Untuk menjalankan proyek ini, cukup memerlukan python versi 3.8 keatas.
+Untuk menjalankan proyek ini, memerlukan:
+1. Python 3.8 keatas
+2. Networkx 2.5 keatas beserta dependencies-nya
+3. Matplotlib 3.4 keatas beserta dependencies-nya
 
 ## How to Run
 
@@ -37,6 +40,8 @@ Jika ingin menguji testcase satu-per-satu secara manual, dapat dilakukan sebagai
 1. Comment baris "runTestCases(numOfCases)"
 2. Uncomment baris-baris dibawahnya
 3. Jalankan seperti instruksi sebelumnya
+
+Program akan menampilkan visualisasi graf terlebih dahulu sebelum meminta kedua node dan menampilkan tujuan. Untuk melanjutkan program, tutup visualisasi graf.
 
 ## Credits
 

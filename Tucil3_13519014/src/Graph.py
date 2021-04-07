@@ -1,3 +1,8 @@
+# Untuk visualisasi
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Local
 from Node import Node
 from PriorityQueue import PriorityQueue
 
@@ -6,6 +11,9 @@ class Graph :
     def __init__(self) : 
         # Node Coordinates 
         self.__nodes = {}
+
+        # Untuk kebutuhan visualisasi dengan networkx dan matplotlib
+        self.visual = []
 
         # Edges Weight/Priority  
         self.__adjacencyList = {}
@@ -38,7 +46,11 @@ class Graph :
         if(type(weight) != int) :
             if(weight != float('inf')) : 
                 raise Exception("Weight argument must be an integer or infinity")
-        self.__adjacencyList[nodeStart][nodeEnd] = weight 
+        self.__adjacencyList[nodeStart][nodeEnd] = weight
+
+        if (weight != float('inf') and weight > -1):
+            temp = [nodeStart, nodeEnd]
+            self.visual.append(temp)
 
     # Mendapatkan jarak Eucledean
     def getEuclideanDistance(self, x1, x2, y1, y2) : 
@@ -136,3 +148,10 @@ class Graph :
                 if(weight == -1) : 
                     weight = float('inf')
                 self.addEdge(nodeStart, nodeEnd, weight)
+
+    # Visualisasi dengan networkx dan matplotlib
+    def visualize(self):
+        G = nx.Graph()
+        G.add_edges_from(self.visual)
+        nx.draw_networkx(G)
+        plt.show()
