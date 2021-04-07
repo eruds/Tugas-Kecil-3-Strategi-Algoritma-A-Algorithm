@@ -29,7 +29,7 @@ def main() :
     numOfCases = 6
     runTestCases(numOfCases);
 
-    # # Apabila ingin menjalankan test case satu per satu 
+    # # Apabila ingin menjalankan test case satu per satu, uncomment bagian bawah dan comment runTestCases(numofCases)
     # # Tinggal memasukkan nama file beserta ekstensinya, Contoh: "Test1.txt"
     # filename = input("Masukkan nama file: \n")
     # graph = Graph()
